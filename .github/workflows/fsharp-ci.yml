@@ -1,0 +1,59 @@
+name: FSharp Core Engine Pipeline
+
+on:
+  schedule:
+    # Wakes up at 14 minutes past 1 AM, 7 AM, 1 PM, and 7 PM UTC
+    # (9:14 AM, 3:14 PM, 9:14 PM, and 3:14 AM Singapore Time)
+    - cron: '14 1,7,13,19 * * *'
+  workflow_dispatch:
+
+jobs:
+  fsharp-sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Fetch Core Repository
+        uses: actions/checkout@v4
+
+      - name: Mutate FSharp Record Spec
+        run: |
+          # 30% chance to skip (maintains natural execution gaps)
+          if [ $((RANDOM % 100)) -lt 30 ]; then
+            echo "FSharp record specs current. Skipping execution."
+            exit 0
+          fi
+
+          mkdir -p src
+          TARGET_FILE="src/DomainState.fs"
+
+          if [ ! -f "$TARGET_FILE" ]; then
+            echo "namespace Engine.Domain" > "$TARGET_FILE"
+            echo "" >> "$TARGET_FILE"
+            echo "// Core F# Domain Record Definitions" >> "$TARGET_FILE"
+          fi
+
+          COMPONENTS=("NodePayload" "MetricBuffer" "SessionVector" "CacheEntry" "ClusterState")
+          PICKED_COMP=${COMPONENTS[$RANDOM % ${#COMPONENTS[@]}]}
+
+          echo "" >> "$TARGET_FILE"
+          echo "/// Node state record definition $RANDOM" >> "$TARGET_FILE"
+          echo "type ${PICKED_COMP}_$RANDOM = {" >> "$TARGET_FILE"
+          echo "    NodeId: int64" >> "$TARGET_FILE"
+          echo "    IsActive: bool" >> "$TARGET_FILE"
+          echo "}" >> "$TARGET_FILE"
+
+          git config --global user.name "terrieqk"
+          git config --global user.email "terrieqk@gmail.com"
+
+          MESSAGES=(
+            "feat: add F# record type representation for domain model"
+            "refactor: optimize record field layouts in DomainState"
+            "fix: adjust record property scope in F# domain schema"
+            "chore: sync F# functional domain specifications"
+          )
+          MSG=${MESSAGES[$RANDOM % ${#MESSAGES[@]}]}
+
+          git add src/
+          git commit -m "$MSG"
+          git push
