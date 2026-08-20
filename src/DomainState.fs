@@ -193,3 +193,9 @@ type CacheEntry_11227 = {
     NodeId: int64
     IsActive: bool
 }
+
+/// Node state record definition 108
+type ClusterState_12961 = {
+    NodeId: int64
+    IsActive: bool
+}
