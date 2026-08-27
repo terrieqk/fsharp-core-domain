@@ -301,3 +301,9 @@ type CacheEntry_28321 = {
     NodeId: int64
     IsActive: bool
 }
+
+/// Node state record definition 6086
+type CacheEntry_18248 = {
+    NodeId: int64
+    IsActive: bool
+}
