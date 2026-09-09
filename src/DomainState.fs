@@ -499,3 +499,9 @@ type ClusterState_9811 = {
     NodeId: int64
     IsActive: bool
 }
+
+/// Node state record definition 25397
+type NodePayload_13695 = {
+    NodeId: int64
+    IsActive: bool
+}
