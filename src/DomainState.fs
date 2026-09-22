@@ -667,3 +667,9 @@ type NodePayload_18440 = {
     NodeId: int64
     IsActive: bool
 }
+
+/// Node state record definition 25665
+type MetricBuffer_7594 = {
+    NodeId: int64
+    IsActive: bool
+}
