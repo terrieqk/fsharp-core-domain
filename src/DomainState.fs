@@ -727,3 +727,9 @@ type MetricBuffer_6077 = {
     NodeId: int64
     IsActive: bool
 }
+
+/// Node state record definition 6771
+type CacheEntry_7163 = {
+    NodeId: int64
+    IsActive: bool
+}
