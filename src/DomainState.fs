@@ -949,3 +949,9 @@ type ClusterState_9523 = {
     NodeId: int64
     IsActive: bool
 }
+
+/// Node state record definition 3332
+type MetricBuffer_29116 = {
+    NodeId: int64
+    IsActive: bool
+}
