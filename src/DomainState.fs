@@ -1237,3 +1237,9 @@ type NodePayload_1703 = {
     NodeId: int64
     IsActive: bool
 }
+
+/// Node state record definition 6843
+type CacheEntry_18493 = {
+    NodeId: int64
+    IsActive: bool
+}
