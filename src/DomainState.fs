@@ -1279,3 +1279,9 @@ type ClusterState_21716 = {
     NodeId: int64
     IsActive: bool
 }
+
+/// Node state record definition 25078
+type SessionVector_30751 = {
+    NodeId: int64
+    IsActive: bool
+}
