@@ -1315,3 +1315,9 @@ type SessionVector_31499 = {
     NodeId: int64
     IsActive: bool
 }
+
+/// Node state record definition 19184
+type CacheEntry_22347 = {
+    NodeId: int64
+    IsActive: bool
+}
