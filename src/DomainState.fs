@@ -1375,3 +1375,9 @@ type NodePayload_28003 = {
     NodeId: int64
     IsActive: bool
 }
+
+/// Node state record definition 73
+type NodePayload_8633 = {
+    NodeId: int64
+    IsActive: bool
+}
