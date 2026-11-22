@@ -1441,3 +1441,9 @@ type MetricBuffer_480 = {
     NodeId: int64
     IsActive: bool
 }
+
+/// Node state record definition 9841
+type SessionVector_3918 = {
+    NodeId: int64
+    IsActive: bool
+}
